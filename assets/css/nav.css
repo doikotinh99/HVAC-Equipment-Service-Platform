@@ -296,7 +296,22 @@ body.menu-open .mobile-drawer {
 
 @media (max-width: 992px) {
   .nav-menu { display: none; }
-  .mobile-toggle { display: block; }
+  .mobile-toggle { 
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-tel { display: none !important; }
+  .header-actions {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .header-actions .btn {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
   .top-bar-inner {
     flex-direction: column;
     text-align: center;
