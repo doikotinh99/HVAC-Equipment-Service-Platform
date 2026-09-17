@@ -18,13 +18,13 @@ function initNavigation() {
   if (toggleBtn && mobileDrawer) {
     mobileDrawer.innerHTML = `
       <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
       <a href="services.html" class="mobile-nav-link">All Services</a>
       <a href="boiler-repair.html" class="mobile-nav-link mobile-sub-link">Boiler Repair</a>
       <a href="boiler-installation.html" class="mobile-nav-link mobile-sub-link">Boiler Installation</a>
       <a href="maintenance.html" class="mobile-nav-link mobile-sub-link">Maintenance Plans</a>
       <a href="commercial-boilers.html" class="mobile-nav-link mobile-sub-link">Commercial Boilers</a>
       <a href="products.html" class="mobile-nav-link">Equipment Catalog</a>
-      <a href="about.html" class="mobile-nav-link">About Us</a>
       <a href="contact.html" class="mobile-nav-link">Contact & Emergency</a>
       <div class="mobile-drawer-cta">
         <a href="tel:8158461007" class="btn btn-cyan btn-wide">Call (815) 846-1007</a>
@@ -59,10 +59,20 @@ function initNavigation() {
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === pageName || (pageName === '' && href === 'index.html')) {
+    if (
+      href === pageName ||
+      (pageName === '' && href === 'index.html') ||
+      (pageName === 'product-detail.html' && (href === 'products.html' || href === 'product-detail.html'))
+    ) {
       link.classList.add('active');
     }
   });
+
+  const isServicesSubpage = ['boiler-repair.html', 'boiler-installation.html', 'maintenance.html', 'commercial-boilers.html', 'services.html'].includes(pageName);
+  if (isServicesSubpage) {
+    const servicesTrigger = document.querySelector('.nav-dropdown-trigger');
+    if (servicesTrigger) servicesTrigger.classList.add('active');
+  }
 
   initTopbarMarquee();
 }
