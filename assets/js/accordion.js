@@ -39,10 +39,18 @@ function initAccordions() {
         nested.classList.remove('open');
         if (nestedContent) nestedContent.style.maxHeight = null;
         if (miniSymbol) miniSymbol.textContent = '+';
+        nestedBtn.setAttribute('aria-expanded', 'false');
+
+        if (masterContent) {
+          setTimeout(() => {
+            masterContent.style.maxHeight = masterContent.scrollHeight + 'px';
+          }, 280);
+        }
       } else {
         nested.classList.add('open');
         if (nestedContent) nestedContent.style.maxHeight = nestedContent.scrollHeight + 'px';
         if (miniSymbol) miniSymbol.innerHTML = '&minus;';
+        nestedBtn.setAttribute('aria-expanded', 'true');
 
         if (masterContent) {
           setTimeout(() => {

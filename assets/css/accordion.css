@@ -1,23 +1,35 @@
+/* ==========================================================================
+   Multi-Level Parent & Child Accordions (Master & Nested Hierarchy)
+   ========================================================================== */
+
 .accordion-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
+/* --- Tier 1: Master Parent Accordion --- */
 .master-accordion,
 .accordion-item {
   background: var(--panel);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color var(--transition);
-  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.master-accordion:hover,
+.accordion-item:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.08);
 }
 
 .master-accordion.open,
 .accordion-item.active {
   border-color: var(--cyan);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.14);
+  background: rgba(14, 25, 48, 0.98);
 }
 
 .master-trigger,
@@ -26,43 +38,96 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.15rem 1.4rem;
+  padding: 1.25rem 1.4rem;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
   color: var(--text-white);
-  font-size: 1.05rem;
-  font-weight: 700;
   gap: 16px;
-  transition: var(--transition);
+  transition: background-color var(--transition);
 }
+
 .master-trigger:hover,
 .accordion-header:hover {
-  background: var(--panel2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.master-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.master-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
   color: var(--cyan);
 }
 
+.master-icon-wrap .svg-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.master-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.master-title {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.master-count-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Master Toggle Symbol (+ / -) */
 .acc-symbol,
 .accordion-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   display: inline-grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(2, 132, 199, 0.08);
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
   color: var(--cyan);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   line-height: 1;
   flex-shrink: 0;
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .master-accordion.open > .master-trigger .acc-symbol,
 .accordion-item.active > .accordion-header .accordion-icon {
-  background: var(--gradient-primary);
-  color: #ffffff;
+  background: var(--cyan);
+  color: #081120;
+  border-color: var(--cyan);
+  transform: rotate(180deg);
 }
 
 .master-content,
@@ -72,48 +137,186 @@
   transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0 1.4rem;
 }
+
 .master-accordion.open > .master-content,
 .accordion-item.active > .accordion-content {
-  padding-bottom: 1.25rem;
+  padding-bottom: 1.4rem;
+}
+
+.master-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 14px 0;
+}
+
+/* --- Tier 2: Nested Child Accordions --- */
+.nested-accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
 }
 
 .nested-accordion {
-  margin-top: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
-  background: var(--panel2);
+  background: rgba(8, 17, 34, 0.75);
+  overflow: hidden;
+  transition: border-color var(--transition), background-color var(--transition);
 }
+
+.nested-accordion:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(12, 23, 44, 0.9);
+}
+
+.nested-accordion.open {
+  border-color: rgba(0, 229, 255, 0.45);
+  background: rgba(10, 22, 42, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
 .nested-trigger {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 12px 14px;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
   color: var(--text-light);
-  font-size: 0.92rem;
-  font-weight: 600;
+  gap: 12px;
+  transition: color var(--transition);
 }
-.nested-trigger:hover {
+
+.nested-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.nested-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.nested-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 42, 133, 0.15);
+  color: #ff6b9d;
+  border: 1px solid rgba(255, 42, 133, 0.3);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nested-trigger:hover .nested-title {
   color: var(--cyan);
 }
+
 .mini-symbol {
-  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--cyan);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
+
+.nested-accordion.open > .nested-trigger .mini-symbol {
+  background: var(--cyan);
+  color: #081120;
+  border-color: var(--cyan);
+}
+
 .nested-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.28s ease;
   padding: 0 14px;
 }
+
 .nested-accordion.open > .nested-content {
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
+.nested-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 4px 0 10px 0;
+}
+
+.nested-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nested-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.nested-check-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.nested-action-row {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.nested-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.05);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nested-action-btn:hover {
+  background: var(--cyan);
+  color: #081120;
+  border-color: var(--cyan);
+  transform: translateX(2px);
+}
+
+/* --- FAQ Rows (Legacy compatibility) --- */
 .faq-row {
   border-bottom: 1px solid var(--line);
   padding: 1.2rem 0;
@@ -149,4 +352,22 @@
 }
 .faq-row.open .faq-a {
   margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .master-trigger {
+    padding: 1.1rem 1.15rem;
+  }
+  .master-title {
+    font-size: 1rem;
+  }
+  .master-content {
+    padding: 0 1.15rem;
+  }
+  .nested-trigger {
+    padding: 10px 12px;
+  }
+  .nested-content {
+    padding: 0 12px;
+  }
 }

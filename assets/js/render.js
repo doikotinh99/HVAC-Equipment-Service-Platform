@@ -264,34 +264,55 @@ function renderAccordionModules(containerId, modules) {
   const container = document.getElementById(cId);
   if (!container || !Array.isArray(data)) return;
 
-  container.innerHTML = data.map(mod => {
-    let innerContentHtml = '';
+  container.innerHTML = data.map((mod, idx) => {
+    let itemsHtml = '';
 
-    if (mod.type === 'nested' && Array.isArray(mod.items)) {
-      innerContentHtml = `
-        ${mod.description ? `<p>${mod.description}</p>` : ''}
-        ${mod.items.map(sub => `
-          <div class="nested-accordion">
-            <button class="nested-trigger" type="button">
-              <span>${sub.trigger}</span>
-              <span class="mini-symbol">+</span>
+    if (Array.isArray(mod.items)) {
+      itemsHtml = mod.items.map((sub, sIdx) => {
+        const bulletsHtml = Array.isArray(sub.bullets) && sub.bullets.length ? `
+          <ul class="nested-checklist">
+            ${sub.bullets.map(b => `
+              <li>
+                <svg class="svg-icon nested-check-icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                <span>${b}</span>
+              </li>
+            `).join('')}
+          </ul>
+        ` : '';
+
+        const actionHtml = sub.actionText ? `
+          <div class="nested-action-row">
+            <a href="${sub.actionUrl || 'contact.html'}" class="btn btn-outline btn-xs nested-action-btn">
+              ${sub.actionText}
+            </a>
+          </div>
+        ` : '';
+
+        return `
+          <div class="nested-accordion" id="${mod.id}-sub-${sIdx}">
+            <button class="nested-trigger" type="button" aria-expanded="false">
+              <div class="nested-trigger-left">
+                <span class="nested-title">${sub.trigger}</span>
+                ${sub.badge ? `<span class="nested-badge">${sub.badge}</span>` : ''}
+              </div>
+              <span class="mini-symbol" aria-hidden="true">+</span>
             </button>
             <div class="nested-content">
-              <p>${sub.content}</p>
+              <p class="nested-desc">${sub.content}</p>
+              ${bulletsHtml}
+              ${actionHtml}
             </div>
           </div>
-        `).join('')}
-      `;
+        `;
+      }).join('');
     } else if (mod.type === 'tags' && Array.isArray(mod.tags)) {
-      innerContentHtml = `
-        ${mod.description ? `<p>${mod.description}</p>` : ''}
+      itemsHtml = `
         <div class="trust-tags" style="margin-top:10px;">
           ${mod.tags.map(tag => `<span class="trust-tag">${tag}</span>`).join('')}
         </div>
       `;
     } else if (mod.type === 'checklist' && Array.isArray(mod.items)) {
-      innerContentHtml = `
-        ${mod.description ? `<p>${mod.description}</p>` : ''}
+      itemsHtml = `
         <ul class="checklist">
           ${mod.items.map(item => `
             <li>
@@ -301,18 +322,27 @@ function renderAccordionModules(containerId, modules) {
           `).join('')}
         </ul>
       `;
-    } else {
-      innerContentHtml = `<p>${mod.description || ''}</p>`;
     }
 
     return `
-      <div class="master-accordion">
+      <div class="master-accordion" id="${mod.id}">
         <button class="master-trigger" type="button" aria-expanded="false">
-          <span>${mod.title}</span>
-          <span class="acc-symbol">+</span>
+          <div class="master-trigger-left">
+            <span class="master-icon-wrap">
+              <svg class="svg-icon" aria-hidden="true"><use href="${mod.icon || '#icon-shield'}"></use></svg>
+            </span>
+            <div class="master-title-group">
+              <span class="master-title">${mod.title}</span>
+              ${mod.countLabel ? `<span class="master-count-badge">${mod.countLabel}</span>` : ''}
+            </div>
+          </div>
+          <span class="acc-symbol" aria-hidden="true">+</span>
         </button>
         <div class="master-content">
-          ${innerContentHtml}
+          ${mod.description ? `<p class="master-desc">${mod.description}</p>` : ''}
+          <div class="nested-accordion-group">
+            ${itemsHtml}
+          </div>
         </div>
       </div>
     `;

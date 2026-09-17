@@ -16,6 +16,36 @@ function initApp() {
   if (document.getElementById('detailTitle') && typeof initProductDetail === 'function') {
     initProductDetail();
   }
+
+  initFloatingHotline();
+}
+
+function initFloatingHotline() {
+  const floating = document.getElementById('floatingHotline');
+  if (!floating) return;
+
+  const updateVisibility = () => {
+    if (window.innerWidth <= 768) {
+      if (window.scrollY < 200) {
+        floating.style.opacity = '0';
+        floating.style.pointerEvents = 'none';
+        floating.style.transform = 'translateY(12px)';
+      } else {
+        floating.style.opacity = '1';
+        floating.style.pointerEvents = 'auto';
+        floating.style.transform = 'translateY(0)';
+      }
+    } else {
+      floating.style.opacity = '1';
+      floating.style.pointerEvents = 'auto';
+      floating.style.transform = 'none';
+    }
+  };
+
+  floating.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  window.addEventListener('resize', updateVisibility, { passive: true });
+  updateVisibility();
 }
 
 if (typeof window !== 'undefined') {

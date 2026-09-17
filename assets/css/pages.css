@@ -35,12 +35,12 @@
   white-space: nowrap;
 }
 @media (max-width: 576px) {
-  .hero-actions {
+  .hero-actions:not(.hero-actions-emergency) {
     gap: 8px;
     width: 100%;
     flex-wrap: nowrap !important;
   }
-  .hero-actions .btn {
+  .hero-actions:not(.hero-actions-emergency) .btn {
     flex: 1 1 0;
     min-width: 0;
     padding: 10px 6px;
@@ -50,22 +50,22 @@
     justify-content: center;
     white-space: nowrap;
   }
-  .hero-actions .btn .svg-icon {
+  .hero-actions:not(.hero-actions-emergency) .btn .svg-icon {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
   }
 }
 @media (max-width: 400px) {
-  .hero-actions {
+  .hero-actions:not(.hero-actions-emergency) {
     gap: 5px;
   }
-  .hero-actions .btn {
+  .hero-actions:not(.hero-actions-emergency) .btn {
     padding: 9px 3px;
     font-size: 0.72rem;
     gap: 4px;
   }
-  .hero-actions .btn .svg-icon {
+  .hero-actions:not(.hero-actions-emergency) .btn .svg-icon {
     width: 12px;
     height: 12px;
   }
@@ -75,7 +75,7 @@
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   font-weight: 900;
   line-height: 1.24;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.03em;
   min-height: 2.5em;
 }
@@ -96,16 +96,246 @@
   margin-bottom: -0.2em;
 }
 
-@media (max-width: 576px) {
+/* --- Local Trust Bar (TR Miller & Four Seasons model) --- */
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+}
+.hero-trust-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+.stars-gold {
+  color: #fbbf24;
+  letter-spacing: 2px;
+  font-size: 1.05rem;
+}
+.trust-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.hero-trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+.trust-pill .svg-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--cyan);
+}
+
+/* --- Action CTAs with subtext --- */
+.hero-actions-emergency {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+.hero-cta-call,
+.hero-cta-schedule {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+.hero-cta-call {
+  background: linear-gradient(135deg, var(--coral), #e11d48);
+  box-shadow: 0 4px 18px rgba(225, 29, 72, 0.35);
+}
+.hero-cta-call:hover {
+  background: linear-gradient(135deg, #f43f5e, #be123c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(225, 29, 72, 0.5);
+}
+.hero-cta-schedule {
+  border-color: rgba(0, 229, 255, 0.5);
+  background: rgba(0, 229, 255, 0.06);
+}
+.hero-cta-schedule:hover {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+.btn-call-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.2;
+}
+.btn-main-label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.btn-subtext {
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.88;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- ABC / TR Miller 3 Quick Problem Selector Tiles --- */
+.hero-quick-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+.hero-quick-tile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(14, 25, 48, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.hero-quick-tile:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 229, 255, 0.08);
+  transform: translateY(-2px);
+}
+.hero-quick-tile.tile-emergency {
+  border-color: rgba(255, 42, 133, 0.4);
+}
+.hero-quick-tile.tile-emergency:hover {
+  border-color: #ff2a85;
+  background: rgba(255, 42, 133, 0.12);
+}
+.tile-icon-badge {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.tile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.tile-info strong {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile-info span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile-arrow {
+  font-size: 0.88rem;
+  color: var(--cyan);
+  margin-left: auto;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.hero-quick-tile:hover .tile-arrow {
+  transform: translateX(3px);
+}
+
+@keyframes cardGlowPulse {
+  0% { box-shadow: 0 0 0 rgba(0, 229, 255, 0); }
+  50% { box-shadow: 0 0 35px rgba(0, 229, 255, 0.7); border-color: var(--cyan); }
+  100% { box-shadow: 0 0 0 rgba(0, 229, 255, 0); }
+}
+.highlight-pulse {
+  animation: cardGlowPulse 1.5s ease;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 1.5rem 0 2rem 0;
+  }
   .hero-typewriter {
-    min-height: 3.75em;
+    font-size: 1.65rem;
+    min-height: auto;
+    margin-bottom: 0.65rem;
+  }
+  .hero-lead {
+    font-size: 0.92rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.45;
+  }
+  .hero-trust-bar {
+    padding: 6px 10px;
+    gap: 8px;
+    margin-bottom: 0.85rem;
+  }
+  .hero-trust-badges {
+    display: none;
+  }
+  .hero-actions-emergency {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 0.85rem;
+  }
+  .hero-cta-call,
+  .hero-cta-schedule {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 14px;
+  }
+  .hero-quick-tiles {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-quick-tile {
+    padding: 8px 10px;
+  }
+  .hero-stat-row {
+    padding-top: 14px;
+    margin-top: 14px;
+    gap: 12px;
+    justify-content: space-around;
+  }
+  .hero-stat-item h3 {
+    font-size: 1.35rem;
+  }
+  .hero-stat-item p {
+    font-size: 0.72rem;
   }
 }
 
 .hero-lead {
   font-size: 1.15rem;
   color: var(--text-light);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   max-width: 560px;
   line-height: 1.6;
 }

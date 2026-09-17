@@ -3,11 +3,12 @@ function initTypewriter() {
   const line2 = document.getElementById('type-line-2');
   if (!line1 || !line2) return;
 
-  const firstText = 'Boiler Problems?';
-  const secondText = 'We Bring the Heat Back.';
+  const firstText = 'Boiler Problems? No Heat?';
+  const secondText = 'We Bring Heat Back in 60 Mins.';
 
   const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) {
+  const isMobile = window.innerWidth <= 768;
+  if (prefersReduced || isMobile) {
     line1.textContent = firstText;
     line2.textContent = secondText;
     return;
