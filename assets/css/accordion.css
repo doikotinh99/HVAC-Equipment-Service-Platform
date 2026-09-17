@@ -1,0 +1,152 @@
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.master-accordion,
+.accordion-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.master-accordion.open,
+.accordion-item.active {
+  border-color: var(--cyan);
+  box-shadow: var(--shadow-md);
+}
+
+.master-trigger,
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  gap: 16px;
+  transition: var(--transition);
+}
+.master-trigger:hover,
+.accordion-header:hover {
+  background: var(--panel2);
+  color: var(--cyan);
+}
+
+.acc-symbol,
+.accordion-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--cyan);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.master-accordion.open > .master-trigger .acc-symbol,
+.accordion-item.active > .accordion-header .accordion-icon {
+  background: var(--gradient-primary);
+  color: #ffffff;
+}
+
+.master-content,
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 1.4rem;
+}
+.master-accordion.open > .master-content,
+.accordion-item.active > .accordion-content {
+  padding-bottom: 1.25rem;
+}
+
+.nested-accordion {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--panel2);
+}
+.nested-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-light);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.nested-trigger:hover {
+  color: var(--cyan);
+}
+.mini-symbol {
+  font-weight: bold;
+  color: var(--cyan);
+}
+.nested-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+  padding: 0 14px;
+}
+.nested-accordion.open > .nested-content {
+  padding-bottom: 10px;
+}
+
+.faq-row {
+  border-bottom: 1px solid var(--line);
+  padding: 1.2rem 0;
+}
+.faq-row:last-child {
+  border-bottom: none;
+}
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-white);
+  gap: 16px;
+}
+.faq-q:hover {
+  color: var(--cyan);
+}
+.faq-q b {
+  color: var(--pink);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.faq-row.open .faq-a {
+  margin-top: 12px;
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boiler Equipment & Systems Catalog | Repairs Boilers</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <aside class="top-bar" aria-label="Emergency Announcement">
+    <div class="container top-bar-inner">
+      <div class="top-bar-info">
+        <div class="top-bar-item">
+          <span class="emergency-pulse"></span>
+          <strong>24/7 Chicago HVAC Emergency Dispatch</strong>
+        </div>
+        <div class="top-bar-item">
+          <span><svg class="svg-icon" style="color:var(--rich-blue-electric);"><use href="#icon-map-pin"></use></svg> Serving Joliet, Naperville, Plainfield &amp; Greater Chicago Metro</span>
+        </div>
+      </div>
+      <div class="top-bar-item">
+        <span>Need Urgent Heat or AC?</span>
+        <a href="tel:8155560660" class="top-phone-link" id="topEmergencyCall">
+          <svg class="svg-icon"><use href="#icon-phone"></use></svg> (815) 556-0660
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="rb-brand">
+          <span>Repairs</span><b>Boilers</b>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item-dropdown">
+            <a href="services.html" class="nav-link nav-dropdown-trigger"><span>Services</span> <svg class="svg-icon nav-chevron" aria-hidden="true"><use href="#icon-chevron-down"></use></svg></a>
+            <ul class="dropdown-menu">
+              <li><a href="boiler-repair.html" class="dropdown-link">Boiler Repair</a></li>
+              <li><a href="boiler-installation.html" class="dropdown-link">Boiler Installation</a></li>
+              <li><a href="maintenance.html" class="dropdown-link">Preventative Maintenance</a></li>
+              <li><a href="commercial-boilers.html" class="dropdown-link">Commercial Boilers</a></li>
+            </ul>
+          </li>
+          <li><a href="products.html" class="nav-link active">Equipment</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="header-actions">
+          <a href="tel:8158461007" class="header-tel"><svg class="svg-icon" aria-hidden="true"><use href="#icon-phone"></use></svg> (815) 846-1007</a>
+          <a href="contact.html" class="btn btn-primary btn-sm">Request Service</a>
+          <button class="mobile-toggle" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <div class="mobile-drawer">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="about.html" class="mobile-nav-link">About Us</a>
+    <a href="services.html" class="mobile-nav-link">All Services</a>
+    <a href="boiler-repair.html" class="mobile-nav-link mobile-sub-link">Boiler Repair</a>
+    <a href="boiler-installation.html" class="mobile-nav-link mobile-sub-link">Boiler Installation</a>
+    <a href="maintenance.html" class="mobile-nav-link mobile-sub-link">Maintenance Plans</a>
+    <a href="commercial-boilers.html" class="mobile-nav-link mobile-sub-link">Commercial Boilers</a>
+    <a href="products.html" class="mobile-nav-link">Equipment Catalog</a>
+    <a href="contact.html" class="mobile-nav-link">Contact & Emergency</a>
+    <div class="mobile-drawer-cta">
+      <a href="tel:8158461007" class="btn btn-cyan btn-wide">Call (815) 846-1007</a>
+      <a href="contact.html" class="btn btn-primary btn-wide">Request Fast Dispatch</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="productsCatalogSection" style="padding: 1.75rem 0 3.5rem 0;">
+      <div class="container">
+
+        <div class="mobile-catalog-header">
+          <div class="mobile-search-row">
+            <div class="rockauto-part-search" style="margin-bottom:0; flex:1;">
+              <svg class="rockauto-search-icon-left" aria-hidden="true"><use href="#icon-search"></use></svg>
+              <input type="text" id="catalogSearchInputMobile" placeholder="Model, Brand, Spec, Keyword..." aria-label="Search boiler model or manufacturer">
+              <button type="button" id="catalogSearchClearMobile" class="rockauto-search-clear-btn" style="display:none;" aria-label="Clear search">&times;</button>
+            </div>
+            <button type="button" class="mobile-filter-open-btn" id="mobileFilterToggle">
+              <svg class="svg-icon" style="width:15px; height:15px;" aria-hidden="true"><use href="#icon-filter"></use></svg>
+              <span>Filters</span>
+              <span class="filter-count-badge" id="mobileFilterBadge" style="display:none;">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="rockauto-drawer-backdrop" id="drawerBackdrop"></div>
+
+        <div class="rockauto-top-breadcrumbs" id="rockAutoBreadcrumbs">
+          <div id="breadcrumbTrail" class="breadcrumb-trail"></div>
+        </div>
+
+        <div class="rockauto-layout">
+          <aside class="rockauto-sidebar" id="rockAutoSidebar" aria-label="Boiler Equipment Drilldown Catalog">
+            <div class="rockauto-sidebar-head">
+              <h3>
+                <svg class="svg-icon" style="width:16px; height:16px; color:var(--cyan);" aria-hidden="true"><use href="#icon-tools"></use></svg>
+                Equipment Tree
+              </h3>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button type="button" class="rockauto-reset-btn" id="treeResetBtn">Reset All</button>
+                <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Filter Drawer">&times;</button>
+              </div>
+            </div>
+
+            <div class="desktop-search-only rockauto-part-search">
+              <svg class="rockauto-search-icon-left" aria-hidden="true"><use href="#icon-search"></use></svg>
+              <input type="text" id="catalogSearchInput" placeholder="Model, Brand, Spec, Keyword..." aria-label="Search boiler model or manufacturer">
+              <button type="button" id="catalogSearchClear" class="rockauto-search-clear-btn" style="display:none;" aria-label="Clear search">&times;</button>
+            </div>
+
+            <div class="rockauto-tree" id="rockAutoTree" role="tree" aria-label="Equipment hierarchy"></div>
+
+            <div class="rockauto-drawer-footer">
+              <button type="button" class="btn btn-cyan btn-sm" id="applyDrawerBtn" style="width:100%; justify-content:center; padding:11px 16px;">
+                Show Products &rarr;
+              </button>
+            </div>
+          </aside>
+
+          <section class="rockauto-content">
+            <div class="rockauto-toolbar">
+              <span id="catalogCountBadge" class="catalog-count-badge">Loading equipment...</span>
+
+              <div class="rockauto-view-controls">
+                <div class="catalog-sort-group">
+                  <label for="catalogSortSelect" style="font-size:0.8rem; color:var(--text-muted);">Sort:</label>
+                  <select id="catalogSortSelect" class="catalog-sort-select">
+                    <option value="default">Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Model A to Z</option>
+                  </select>
+                </div>
+
+                <div class="view-mode-group">
+                  <button type="button" class="view-btn active" id="viewBtnGrid" title="Visual Cards Grid View">
+                    <svg class="svg-icon" style="width:14px; height:14px;" aria-hidden="true"><use href="#icon-grid"></use></svg>
+                    <span>Grid</span>
+                  </button>
+                  <button type="button" class="view-btn" id="viewBtnList" title="Technical Specs List View">
+                    <svg class="svg-icon" style="width:14px; height:14px;" aria-hidden="true"><use href="#icon-list"></use></svg>
+                    <span>List</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="productsCatalogGrid" class="grid grid-3"></div>
+
+            <div id="catalogPagination" class="catalog-pagination-container"></div>
+
+            <div id="catalogEmptyState" style="display: none; text-align: center; padding: 50px 20px; background: rgba(8, 17, 38, 0.6); border-radius: 12px; border: 1px dashed var(--line); margin-top: 24px;">
+              <svg class="svg-icon" style="width: 44px; height: 44px; color: var(--text-muted); margin-bottom: 12px;" aria-hidden="true"><use href="#icon-search"></use></svg>
+              <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 8px;">No matching equipment found</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 460px; margin: 0 auto 16px;">
+                Try adjusting your search keywords, clearing selected filters, or browsing by category above.
+              </p>
+              <button type="button" class="btn btn-outline btn-sm" id="resetEmptyFiltersBtn">
+                Reset All Filters
+              </button>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="quoteModal" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <button class="modal-close" id="closeQuoteModal" aria-label="Close dialog">&times;</button>
+      <span class="badge badge-pink" style="margin-bottom:8px; display:inline-block;">Instant Rebate Quote</span>
+      <h3 id="modalTitle" style="font-size:1.35rem; color:#fff; font-weight:800; margin-bottom:6px;">
+        Request Quote: <span id="modalProductName" style="color:var(--cyan);">Selected Equipment</span>
+      </h3>
+      <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5; margin-bottom:20px;">
+        Our licensed Joliet boiler specialist will verify system piping compatibility, calculate Nicor Gas instant rebates, and deliver a zero-obligation installation estimate.
+      </p>
+
+      <form id="modalQuoteForm">
+        <input type="hidden" id="modalProductField" name="product" value="">
+        <div class="form-group" style="margin-bottom:14px;">
+          <label for="quoteName" style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:5px;">Full Name *</label>
+          <input type="text" id="quoteName" class="form-control" required placeholder="Your full name" style="width:100%; padding:10px 14px; background:var(--ink); border:1px solid var(--line); border-radius:var(--radius-sm); color:#fff; font-family:inherit;">
+        </div>
+        <div class="grid grid-2" style="gap:14px; margin-bottom:14px;">
+          <div class="form-group">
+            <label for="quotePhone" style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:5px;">Phone Number *</label>
+            <input type="tel" id="quotePhone" class="form-control" required placeholder="(815) 846-1007" style="width:100%; padding:10px 14px; background:var(--ink); border:1px solid var(--line); border-radius:var(--radius-sm); color:#fff; font-family:inherit;">
+          </div>
+          <div class="form-group">
+            <label for="quoteZip" style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:5px;">Zip Code (Illinois) *</label>
+            <input type="text" id="quoteZip" class="form-control" required placeholder="60435" style="width:100%; padding:10px 14px; background:var(--ink); border:1px solid var(--line); border-radius:var(--radius-sm); color:#fff; font-family:inherit;">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:18px;">
+          <label for="quoteHomeNotes" style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:5px;">Home Square Footage &amp; Heating Notes</label>
+          <input type="text" id="quoteHomeNotes" class="form-control" placeholder="e.g. 2,200 sq ft home with cast iron radiators" style="width:100%; padding:10px 14px; background:var(--ink); border:1px solid var(--line); border-radius:var(--radius-sm); color:#fff; font-family:inherit;">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px 16px;">
+          Submit Quote Request &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="rb-brand" style="margin-bottom: 1rem;">
+            <span>Repairs</span><b>Boilers</b>
+          </a>
+          <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;">
+            Will County's premier boiler and hydronic heating contractors. Providing expert boiler repair, high-efficiency system replacement, and commercial heating services.
+          </p>
+          <div class="trust-tags">
+            <span class="trust-tag">
+              <svg class="svg-icon" aria-hidden="true"><use href="#icon-shield"></use></svg>
+              Licensed &amp; Insured
+            </span>
+            <span class="trust-tag">
+              <svg class="svg-icon" aria-hidden="true"><use href="#icon-award"></use></svg>
+              EPA Certified
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="boiler-repair.html">Boiler Repair</a></li>
+            <li><a href="boiler-installation.html">Boiler Installation</a></li>
+            <li><a href="maintenance.html">Preventative Maintenance</a></li>
+            <li><a href="commercial-boilers.html">Commercial Systems</a></li>
+            <li><a href="products.html">Radiant Floor Heat</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Repairs Boilers</a></li>
+            <li><a href="products.html">Equipment Catalog</a></li>
+            <li><a href="contact.html">Contact &amp; Emergency</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Emergency Dispatch</h4>
+          <p style="font-size:0.9rem; margin-bottom:1rem;">Available 24 hours a day, 7 days a week for heating emergencies.</p>
+          <a href="tel:8158461007" style="font-size:1.25rem; font-weight:900; color:var(--cyan); display:flex; align-items:center; gap:8px; margin-bottom:0.75rem;">
+            <svg class="svg-icon" aria-hidden="true"><use href="#icon-phone"></use></svg>
+            (815) 846-1007
+          </a>
+          <p style="font-size:0.85rem; color:var(--text-dim);">1504 Essington Road, Unit 3, Joliet, IL 60435</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Repairs Boilers. All rights reserved. | Licensed &amp; Insured Mechanical Contractor</span>
+        <span>Boiler Repair. <span class="gradient-text">Heating Restored.</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <a href="tel:8158461007" class="floating-hotline" id="floatingHotline" aria-label="Call 24/7 Urgent Dispatch">
+    <span class="floating-hotline-icon">
+      <svg class="svg-icon" aria-hidden="true"><use href="#icon-phone"></use></svg>
+    </span>
+    <span>
+      <span style="font-size: 0.7rem; letter-spacing: 0.05em; display: block; opacity: 0.95;">24/7 URGENT DISPATCH</span>
+      <strong style="font-size: 0.95rem;">(815) 846-1007</strong>
+    </span>
+  </a>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/accordion.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
