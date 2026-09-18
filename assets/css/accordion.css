@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Multi-Level Parent & Child Accordions (Master & Nested Hierarchy)
-   ========================================================================== */
+
 
 .accordion-group {
   display: flex;
@@ -8,7 +6,7 @@
   gap: 14px;
 }
 
-/* --- Tier 1: Master Parent Accordion --- */
+
 .master-accordion,
 .accordion-item {
   background: var(--panel);
@@ -104,7 +102,7 @@
   white-space: nowrap;
 }
 
-/* Master Toggle Symbol (+ / -) */
+
 .acc-symbol,
 .accordion-icon {
   width: 32px;
@@ -150,7 +148,7 @@
   margin: 0 0 14px 0;
 }
 
-/* --- Tier 2: Nested Child Accordions --- */
+
 .nested-accordion-group {
   display: flex;
   flex-direction: column;
@@ -316,7 +314,7 @@
   transform: translateX(2px);
 }
 
-/* --- FAQ Rows (Legacy compatibility) --- */
+
 .faq-row {
   border-bottom: 1px solid var(--line);
   padding: 1.2rem 0;

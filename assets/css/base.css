@@ -153,7 +153,7 @@ p:last-child {
   .grid-3-col { grid-template-columns: 1fr; }
 }
 
-/* ── Section backgrounds — giống web gốc để tạo độ tương phản ── */
+
 .section {
   padding: 75px 0;
   position: relative;
@@ -171,12 +171,12 @@ p:last-child {
 }
 .section-card  { background-color: var(--panel2); }
 
-/* Topbar gradient giống web gốc */
+
 .topbar {
   background: linear-gradient(90deg, #050b18, #0e1e40 50%, #15091c) !important;
 }
 
-/* Emergency pulse dot */
+
 .emergency-pulse {
   display: inline-block;
   width: 9px;

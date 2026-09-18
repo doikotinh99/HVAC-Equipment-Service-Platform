@@ -1,55 +1,40 @@
 :root {
-  /* ── Exact color values from Custom-Multipage-Website-for-HVAC-Company ── */
+  --ink: #0a0a0a;
+  --ink2: #141414;
+  --panel: #1a1a1a;
+  --panel2: #222222;
+  --panel-card: #2a2a2a;
 
-  /* Dark surfaces — giống hệt web gốc */
-  --ink: #081126;
-  --ink2: #0e1e40;
-  --panel: #142852;
-  --panel2: #162c5b;
-  --panel-card: #1c3570;
+  --accent: #e53935;
+  --accent-bright: #ff5252;
+  --accent-strong: #c62828;
+  --accent-deep: #8e1b1b;
+  --accent-glow: rgba(229, 57, 53, 0.2);
 
-  /* Electric HVAC Accents — giống hệt web gốc */
-  --cyan: #00d4ff;
-  --cyan-bright: #00d4ff;
-  --cyan-glow: rgba(0, 212, 255, 0.25);
-  --blue: #0284c7;
-  --blue-glow: rgba(2, 132, 199, 0.35);
-  --coral: #ff6550;
-  --coral-light: #ff8573;
-  --coral-glow: rgba(255, 101, 80, 0.35);
-  --pink: #ff2a85;
-  --pink-glow: rgba(255, 42, 133, 0.35);
-  --yellow: #fbbf24;
-  --yellow-glow: rgba(251, 191, 36, 0.32);
-  --green: #10b981;
-  --green-glow: rgba(16, 185, 129, 0.32);
+  --amber: #ffa726;
+  --green: #22c55e;
 
-  /* Aliases from Custom-Multipage-Website-for-HVAC-Company */
-  --rich-blue-electric: var(--cyan);
-  --electric-salmon: var(--coral);
-  --vibrant-pink: var(--pink);
-
-  /* Typography — giống hệt web gốc */
   --white: #ffffff;
   --text-white: #ffffff;
-  --text-light: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-light: #e5e5e5;
+  --text-muted: #a3a3a3;
+  --text-dim: #8a8a8a;
+  
   --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(0, 212, 255, 0.4);
+  --line-strong: rgba(229, 57, 53, 0.4);
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #ff6550 0%, #ff2a85 100%);
-  --gradient-cyan: linear-gradient(135deg, #00d4ff 0%, #0284c7 100%);
-  --gradient-card: linear-gradient(160deg, #142852 0%, #0e1e40 100%);
-  --gradient-hero: linear-gradient(90deg, #081126 0%, rgba(8, 17, 38, 0.93) 55%, rgba(8, 17, 38, 0.68) 75%, rgba(8, 17, 38, 0.22) 100%);
+  --gradient-primary: linear-gradient(135deg, #e53935 0%, #b71c1c 100%);
+  --gradient-cyan: var(--gradient-primary);
+  --gradient-card: linear-gradient(160deg, #1a1a1a 0%, #141414 100%);
+  --gradient-hero: linear-gradient(90deg, #0a0a0a 0%, rgba(10, 10, 10, 0.93) 55%, rgba(10, 10, 10, 0.68) 75%, rgba(10, 10, 10, 0.22) 100%);
 
-  /* Shadows — giống hệt web gốc */
-  --shadow-sm: 0 2px 8px rgba(8, 17, 38, 0.2);
-  --shadow-md: 0 8px 24px rgba(8, 17, 38, 0.35);
+  --shadow-accent: 0 4px 16px rgba(229, 57, 53, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
-  --shadow-cyan: 0 0 20px rgba(0, 212, 255, 0.4);
-  --shadow-coral: 0 0 20px rgba(255, 101, 80, 0.4);
+  
+  --shadow-cyan: var(--shadow-accent);
+  --shadow-coral: var(--shadow-accent);
 
   --max-width: 1200px;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -58,4 +43,22 @@
   --radius-lg: 18px;
   --radius-full: 9999px;
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --cyan: var(--accent);
+  --cyan-bright: var(--accent-bright);
+  --cyan-glow: var(--accent-glow);
+  --blue: var(--accent-strong);
+  --blue-glow: var(--accent-glow);
+  --coral: var(--accent);
+  --coral-light: var(--accent-bright);
+  --coral-glow: var(--accent-glow);
+  --pink: var(--accent-bright);
+  --pink-glow: var(--accent-glow);
+  --yellow: var(--amber);
+  --yellow-glow: rgba(255, 167, 38, 0.2);
+  --green-glow: rgba(34, 197, 94, 0.2);
+  
+  --rich-blue-electric: var(--accent);
+  --electric-salmon: var(--accent);
+  --vibrant-pink: var(--accent-bright);
 }

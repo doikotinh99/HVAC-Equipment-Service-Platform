@@ -96,7 +96,7 @@
   margin-bottom: -0.2em;
 }
 
-/* --- Local Trust Bar (TR Miller & Four Seasons model) --- */
+
 .hero-trust-bar {
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@
   color: var(--cyan);
 }
 
-/* --- Action CTAs with subtext --- */
+
 .hero-actions-emergency {
   display: flex;
   align-items: center;
@@ -196,7 +196,7 @@
   letter-spacing: 0.04em;
 }
 
-/* --- ABC / TR Miller 3 Quick Problem Selector Tiles --- */
+
 .hero-quick-tiles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
