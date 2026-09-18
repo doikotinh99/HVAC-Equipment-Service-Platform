@@ -295,7 +295,7 @@ function renderAccordionModules(containerId, modules) {
                 <span class="nested-title">${sub.trigger}</span>
                 ${sub.badge ? `<span class="nested-badge">${sub.badge}</span>` : ''}
               </div>
-              <span class="mini-symbol" aria-hidden="true">+</span>
+              <span class="mini-symbol" aria-hidden="true"><svg class="svg-icon" style="width:14px;height:14px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg></span>
             </button>
             <div class="nested-content">
               <p class="nested-desc">${sub.content}</p>
@@ -336,7 +336,7 @@ function renderAccordionModules(containerId, modules) {
               ${mod.countLabel ? `<span class="master-count-badge">${mod.countLabel}</span>` : ''}
             </div>
           </div>
-          <span class="acc-symbol" aria-hidden="true">+</span>
+          <span class="acc-symbol" aria-hidden="true"><svg class="svg-icon" style="width:16px;height:16px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg></span>
         </button>
         <div class="master-content">
           ${mod.description ? `<p class="master-desc">${mod.description}</p>` : ''}
@@ -374,7 +374,7 @@ function renderFaq(containerId, faqs) {
     <div class="faq-row">
       <div class="faq-q">
         <span>${item.q}</span>
-        <b>+</b>
+        <b><svg class="svg-icon" style="width:16px;height:16px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg></b>
       </div>
       <div class="faq-a">
         <p>${item.a}</p>

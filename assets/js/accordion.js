@@ -12,12 +12,12 @@ function initAccordions() {
       if (isOpen) {
         parent.classList.remove('open', 'active');
         if (content) content.style.maxHeight = null;
-        if (symbol) symbol.textContent = '+';
+        if (symbol) symbol.innerHTML = '<svg class="svg-icon" style="width:16px;height:16px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
         btn.setAttribute('aria-expanded', 'false');
       } else {
         parent.classList.add('open', 'active');
         if (content) content.style.maxHeight = content.scrollHeight + 'px';
-        if (symbol) symbol.innerHTML = '&minus;';
+        if (symbol) symbol.innerHTML = '<svg class="svg-icon" style="width:16px;height:16px;transform:rotate(180deg);" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
         btn.setAttribute('aria-expanded', 'true');
       }
     };
@@ -38,7 +38,7 @@ function initAccordions() {
       if (isNestedOpen) {
         nested.classList.remove('open');
         if (nestedContent) nestedContent.style.maxHeight = null;
-        if (miniSymbol) miniSymbol.textContent = '+';
+        if (miniSymbol) miniSymbol.innerHTML = '<svg class="svg-icon" style="width:14px;height:14px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
         nestedBtn.setAttribute('aria-expanded', 'false');
 
         if (masterContent) {
@@ -49,7 +49,7 @@ function initAccordions() {
       } else {
         nested.classList.add('open');
         if (nestedContent) nestedContent.style.maxHeight = nestedContent.scrollHeight + 'px';
-        if (miniSymbol) miniSymbol.innerHTML = '&minus;';
+        if (miniSymbol) miniSymbol.innerHTML = '<svg class="svg-icon" style="width:14px;height:14px;transform:rotate(180deg);" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
         nestedBtn.setAttribute('aria-expanded', 'true');
 
         if (masterContent) {
@@ -73,14 +73,28 @@ function initAccordions() {
       if (isFaqOpen) {
         row.classList.remove('open');
         if (ans) ans.style.maxHeight = null;
-        if (icon) icon.textContent = '+';
+        if (icon) icon.innerHTML = '<svg class="svg-icon" style="width:16px;height:16px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
       } else {
         row.classList.add('open');
         if (ans) ans.style.maxHeight = ans.scrollHeight + 'px';
-        if (icon) icon.innerHTML = '&minus;';
+        if (icon) icon.innerHTML = '<svg class="svg-icon" style="width:16px;height:16px;transform:rotate(180deg);" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>';
       }
     };
   });
+
+  // Automatically open the first accordion group item
+  const firstAccordion = document.querySelector('.master-accordion');
+  if (firstAccordion && !firstAccordion.classList.contains('open')) {
+    const trigger = firstAccordion.querySelector('.master-trigger');
+    if (trigger) trigger.click();
+  }
+
+  // Automatically open the first FAQ item
+  const firstFaq = document.querySelector('.faq-row');
+  if (firstFaq && !firstFaq.classList.contains('open')) {
+    const trigger = firstFaq.querySelector('.faq-q');
+    if (trigger) trigger.click();
+  }
 }
 
 if (typeof window !== 'undefined') {
